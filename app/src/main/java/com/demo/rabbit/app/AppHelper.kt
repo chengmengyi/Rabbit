@@ -14,6 +14,8 @@ import com.demo.rabbit.config.Local1011Config
 import java.lang.Exception
 
 fun getServerFlag(country:String)=when(country){
+    "Australia"->R.drawable.australia
+    "UnitedStates"->R.drawable.unitedstates
     else-> R.drawable.icon_fast
 }
 
