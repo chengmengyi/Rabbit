@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.gyf.immersionbar.ImmersionBar
 
 abstract class Base1011Page(private val id:Int):AppCompatActivity() {
+    var resume1011=false
     protected var apply:ImmersionBar?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,6 +20,21 @@ abstract class Base1011Page(private val id:Int):AppCompatActivity() {
             init()
         }
         view()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        resume1011=true
+    }
+
+    override fun onPause() {
+        super.onPause()
+        resume1011=false
+    }
+
+    override fun onStop() {
+        super.onStop()
+        resume1011=false
     }
 
     abstract fun view()

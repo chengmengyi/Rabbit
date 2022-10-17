@@ -7,11 +7,18 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.ConnectivityManager
 import android.net.Uri
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.demo.rabbit.R
 import com.demo.rabbit.config.Local1011Config
 import java.lang.Exception
+import java.text.SimpleDateFormat
+import java.util.*
+
+fun print1011(string: String){
+    Log.e("qwer",string)
+}
 
 fun getServerFlag(country:String)=when(country){
     "Australia"->R.drawable.australia
@@ -22,6 +29,8 @@ fun getServerFlag(country:String)=when(country){
 fun Context.toast(s: String){
     Toast.makeText(this, s, Toast.LENGTH_LONG).show()
 }
+
+fun saveKey(type:String)="$type...${SimpleDateFormat("yyyy-MM-dd").format(Date(System.currentTimeMillis()))}"
 
 fun Context.getNet1011Status(): Int {
     val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager

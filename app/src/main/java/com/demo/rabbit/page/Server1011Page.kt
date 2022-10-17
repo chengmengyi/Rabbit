@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.demo.rabbit.R
+import com.demo.rabbit.ad.Load1011AdImpl
+import com.demo.rabbit.ad.Show1011ScreenAd
 import com.demo.rabbit.adapter.Server1011Adapter
 import com.demo.rabbit.base.Base1011Page
 import com.demo.rabbit.entity.Server1011Entity
@@ -11,8 +13,11 @@ import com.demo.rabbit.server.ConnectHelper
 import kotlinx.android.synthetic.main.server_page.*
 
 class Server1011Page:Base1011Page(R.layout.server_page) {
+    private val showConnectAd by lazy { Show1011ScreenAd(this, Load1011AdImpl.back){finish()} }
+
     override fun view() {
         apply?.statusBarView(status_view)?.init()
+        Load1011AdImpl.canLoad1011Ad(Load1011AdImpl.back)
 
         recycler_view.apply {
             layoutManager=LinearLayoutManager(this@Server1011Page)
@@ -21,7 +26,7 @@ class Server1011Page:Base1011Page(R.layout.server_page) {
             }
         }
 
-        iv_back.setOnClickListener { finish() }
+        iv_back.setOnClickListener { onBackPressed() }
     }
 
     private fun itemClick(server1011Entity: Server1011Entity){
@@ -57,5 +62,13 @@ class Server1011Page:Base1011Page(R.layout.server_page) {
             setNegativeButton("cancel",null)
             show()
         }
+    }
+
+    override fun onBackPressed() {
+        if (null!=Load1011AdImpl.getAdCache(Load1011AdImpl.back)){
+            showConnectAd.show1011ScreenAd { finish() }
+            return
+        }
+        finish()
     }
 }

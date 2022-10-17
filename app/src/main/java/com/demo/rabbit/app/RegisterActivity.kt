@@ -7,6 +7,7 @@ import android.os.Bundle
 import com.blankj.utilcode.util.ActivityUtils
 import com.demo.rabbit.page.Home1011Page
 import com.demo.rabbit.page.Main1011Page
+import com.google.android.gms.ads.AdActivity
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -54,8 +55,8 @@ object RegisterActivity {
                 job= GlobalScope.launch {
                     delay(3000L)
                     jumpToMain=true
-//                    ActivityUtils.finishActivity(Main0914Activity::class.java)
-//                    ActivityUtils.finishActivity(AdActivity::class.java)
+                    ActivityUtils.finishActivity(Main1011Page::class.java)
+                    ActivityUtils.finishActivity(AdActivity::class.java)
                 }
             }
         }

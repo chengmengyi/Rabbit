@@ -60,4 +60,9 @@
             android:text="Connection succeed"
             android:textColor="@drawable/result_color_selector"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
+    <include android:layout_width="match_parent"
+        android:layout_height="328dp"
+        layout="@layout/result_native_ad"
+        android:layout_margin="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

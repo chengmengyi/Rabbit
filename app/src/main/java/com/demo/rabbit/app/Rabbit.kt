@@ -6,9 +6,11 @@ import com.demo.rabbit.page.Home1011Page
 import com.github.shadowsocks.Core
 import com.tencent.mmkv.MMKV
 
+lateinit var mRabbit: Rabbit
 class Rabbit:Application() {
     override fun onCreate() {
         super.onCreate()
+        mRabbit=this
         Core.init(this,Home1011Page::class)
         MMKV.initialize(this)
         if (!packageName.equals(processName(this))){

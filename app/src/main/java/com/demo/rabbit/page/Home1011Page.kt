@@ -5,6 +5,9 @@ import android.net.VpnService
 import android.view.Gravity
 import androidx.appcompat.app.AlertDialog
 import com.demo.rabbit.R
+import com.demo.rabbit.ad.Load1011AdImpl
+import com.demo.rabbit.ad.Show1011NativeAd
+import com.demo.rabbit.ad.Show1011ScreenAd
 import com.demo.rabbit.app.*
 import com.demo.rabbit.base.Base1011Page
 import com.demo.rabbit.server.ConnectHelper
@@ -31,6 +34,10 @@ class Home1011Page:Base1011Page(R.layout.home_page), ConnectHelper.IConnect1011R
         }
     }
 
+    private val showNativeAd by lazy { Show1011NativeAd(this,Load1011AdImpl.home) }
+
+    private val showConnectAd by lazy { Show1011ScreenAd(this,Load1011AdImpl.connect){toResultPage()} }
+
     override fun view() {
         apply?.statusBarView(status_view)?.init()
         Time1011Helper.setTimeListener(this)
@@ -48,7 +55,7 @@ class Home1011Page:Base1011Page(R.layout.home_page), ConnectHelper.IConnect1011R
         }
         iv_connect_btn.setOnClickListener {
             if (can1011Click&&!drawer_layout.isOpen){
-                can1011Click=true
+                can1011Click=false
                 connectOrDisServer()
             }
         }
@@ -122,8 +129,10 @@ class Home1011Page:Base1011Page(R.layout.home_page), ConnectHelper.IConnect1011R
                     }                }
                 if (time in 3..9){
                     if(connectDisSuccess()){
-                        cancel()
-                        checkServerFinish()
+                        showConnectAd.show1011ScreenAd {jump->
+                            cancel()
+                            checkServerFinish(toResult = jump)
+                        }
                     }
                 }
 
@@ -200,12 +209,20 @@ class Home1011Page:Base1011Page(R.layout.home_page), ConnectHelper.IConnect1011R
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        if (RegisterActivity.loadHomeAd){
+            showNativeAd.has1011AdCache()
+        }
+    }
 
     override fun onDestroy() {
         super.onDestroy()
         checkConnectJob?.cancel()
         checkConnectJob=null
+        showNativeAd.stopHas1011Cache()
         ConnectHelper.onDestroy()
+        RegisterActivity.loadHomeAd=true
         Time1011Helper.setTimeListener(null)
     }
 
