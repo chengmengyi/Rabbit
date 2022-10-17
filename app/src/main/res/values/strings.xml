@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Rabbit</string>
-    <string name="admob_id">ca-app-pub-3940256099942544~3347511713</string>
-
+    <string name="admob_id">ca-app-pub-3675014548292501~1611132083</string>
+    <string name="facebook_app_id">465264578967651</string>
 </resources>

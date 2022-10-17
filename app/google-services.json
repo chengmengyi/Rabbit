@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1045082839481",
+    "project_id": "rabbit-toy",
+    "storage_bucket": "rabbit-toy.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1045082839481:android:660358d75786175f453e68",
+        "android_client_info": {
+          "package_name": "com.rabbittoy.secure.connection"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1045082839481-9lcclsmqqc0lg7803vtrunqa2tia9584.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALY6rGoH7JUtLhQgynfKhWgWMczcNvHZs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1045082839481-9lcclsmqqc0lg7803vtrunqa2tia9584.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
